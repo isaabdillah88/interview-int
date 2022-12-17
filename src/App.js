@@ -35,14 +35,16 @@ export default function App() {
 
   // function to get the difference number between user input number and its reverse
   function handleSubmit() {
+    let result = 0;
+
     if (!numberValue) {
       alert('Number can not be empty!');
-      return;
+    } else {
+      const newNumberValue = numberValue.replace(/[^0-9-]/g, ''); // remove dot and comma
+      const reverseNumberValue = reverseNumber(newNumberValue);
+      result = Math.abs(+newNumberValue - +reverseNumberValue); // the result will always be positive
     }
-
-    const newNumberValue = numberValue.replace(/[^0-9-]/g, ''); // remove dot and comma
-    const reverseNumberValue = reverseNumber(newNumberValue);
-    const result = Math.abs(+newNumberValue - +reverseNumberValue); // the result will always be positive
+    
     setNumberDifference(result);
   }
 
